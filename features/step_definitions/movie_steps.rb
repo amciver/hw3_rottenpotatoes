@@ -9,13 +9,12 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   page.all("table#movies tbody/tr").each do |row|
       movies += row.all("td[1]").collect.each { |element| element.text  }
   end
-
   assert(movies.index(e1) < movies.index(e2), "#{e1} should occur before #{e2}")
 end
 
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   rating_list.gsub!(/[']/, '')
-  rating_list.split(',').each do |rating|
+  rating_list.split(',').uniq.each do |rating|
     if uncheck == "un"
       step "I uncheck \"ratings_#{rating.strip}\""
     else

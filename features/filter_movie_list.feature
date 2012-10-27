@@ -34,7 +34,7 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
 | Raiders of the Lost Ark | PG     | 12-Jun-1981  |
 
 Scenario: no ratings selected
-  When I uncheck the following ratings: 'G', 'PG', 'PG-13', 'R', 'NC-17'
+  When I uncheck the following ratings: G, PG, PG-13, R, NC-17', 'NC-17'
   And I press "Refresh"
   Then I should see all of the movies:
     | title                   | rating | release_date |
